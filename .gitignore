@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+
+# Ignore IDE project settings
+.idea/
+*.iml
+
+# Ignore all target folders from all sections
+**/target/
