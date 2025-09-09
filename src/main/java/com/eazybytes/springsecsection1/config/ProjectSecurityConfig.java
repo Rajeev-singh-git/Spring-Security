@@ -16,7 +16,7 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 //        All request require authentication
 //        http.authorizeHttpRequests((requests) -> requests.anyRequest().authenticated());
-        http.authorizeHttpRequests((requests) -> requests.anyRequest().permitAll());
+        http.authorizeHttpRequests((requests) -> requests.anyRequest().denyAll());
         http.formLogin(withDefaults());
         http.httpBasic(withDefaults());
         return http.build();
