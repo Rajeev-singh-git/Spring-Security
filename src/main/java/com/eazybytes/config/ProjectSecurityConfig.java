@@ -1,4 +1,4 @@
-package com.eazybytes.springsecsection1.config;
+package com.eazybytes.config;
 
 
 import org.springframework.context.annotation.Bean;
