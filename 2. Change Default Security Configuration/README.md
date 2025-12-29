@@ -1,10 +1,3 @@
-
----
-
-# 📘 Section 2 README  
-### **Changing Default Spring Security Configuration**
-
-```md
 ## Section 2 – Changing Default Spring Security Configuration
 
 This project customizes Spring Security by **overriding the default configuration** using a custom `SecurityFilterChain` bean.
