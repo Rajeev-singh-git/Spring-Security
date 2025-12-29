@@ -1,46 +1,33 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# ===============================
+# Build output
+# ===============================
+**/target/
+**/build/
 
-
-# Ignore IDE project settings
+# ===============================
+# IntelliJ IDEA
+# ===============================
 .idea/
 *.iml
-
-# Ignore all target folders from all sections
-**/target/
-
-
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
 *.iws
-*.iml
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# ===============================
+# Eclipse / STS
+# ===============================
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache/
 
-### VS Code ###
+# ===============================
+# VS Code
+# ===============================
 .vscode/
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
