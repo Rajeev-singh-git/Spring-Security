@@ -57,6 +57,31 @@ Authorization is controlled using:
 
 ---
 
+## 🔍 Authentication Behavior Notes (Important)
+
+When authentication mechanisms are customized:
+
+### If `formLogin()` is disabled:
+- Default login page is not generated
+- `UsernamePasswordAuthenticationFilter` is **skipped**
+- Credentials are no longer read from form parameters
+- Browser may show a Basic Auth popup (browser behavior)
+
+### If `httpBasic()` is enabled:
+- Credentials are sent via `Authorization` header
+- Header format:
+
+Authorization: Basic base64(username:password)
+
+- Credentials are extracted and decoded by:
+`BasicAuthenticationFilter`
+
+### If both `formLogin()` and `httpBasic()` are disabled:
+- No authentication entry mechanism exists
+- Spring Security responds with 401 / 403
+- Used typically for JWT or custom authentication flows
+
+
 ## 🔑 Authentication Mechanisms
 
 Both mechanisms are still enabled:
