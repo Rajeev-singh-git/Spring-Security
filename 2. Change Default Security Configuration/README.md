@@ -1,19 +1,80 @@
-# Spring Security Learning Repo
 
-This repository contains my notes and code while learning **Spring Security**.  
-Each section corresponds to one course module, with commits documenting concept-level progress.
+---
 
-## Sections
+# 📘 Section 2 README  
+### **Changing Default Spring Security Configuration**
 
-1. **Section 1:** Intro & Basic Setup
-   - [Commit History](link-to-github-commits-for-section1)
+```md
+## Section 2 – Changing Default Spring Security Configuration
 
-2. [**Section 2:** Changing the default security configuration](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/z%20Notes/02.%20Change%20Default%20Security.md)
+This project customizes Spring Security by **overriding the default configuration** using a custom `SecurityFilterChain` bean.
 
-3. **Section 3:** InMemoryUserDetailsManager
+This section builds directly on Section 1.
 
-4. **Section 4:** JDBC + UserDetailsService
+---
 
-...
+## 🎯 Purpose
 
-11. **Section 11:** JWT Authentication
+To learn how to:
+- Override Spring Security default behavior
+- Define authorization rules based on business requirements
+- Control access using `requestMatchers`
+- Understand `permitAll`, `authenticated`, and `denyAll`
+
+---
+
+## 🔐 What Changed Compared to Section 1
+
+- Default `SecurityFilterChain` is **replaced**
+- Custom authorization rules are defined
+- APIs are categorized as:
+  - **Public APIs**
+  - **Secured APIs**
+
+---
+
+## 🔧 Custom Authorization Configuration
+
+Example behavior implemented:
+
+- Secured APIs (authentication required):
+  - `/myAccount`
+  - `/myBalance`
+  - `/myLoans`
+  - `/myCards`
+
+- Public APIs (no authentication required):
+  - `/notice`
+  - `/contact`
+  - `/error`
+
+Authorization is controlled using:
+- `authorizeHttpRequests`
+- `requestMatchers`
+- `authenticated()` and `permitAll()`
+
+---
+
+## 🚫 Important Learnings
+
+- `anyRequest().permitAll()` → disables security entirely (not recommended)
+- `anyRequest().denyAll()` → blocks all access (403 for everyone)
+- Authentication and authorization are **separate concerns**
+- Authorization rules must align with business logic
+
+---
+
+## 🔑 Authentication Mechanisms
+
+Both mechanisms are still enabled:
+- Form Login (for browser testing)
+- HTTP Basic Authentication (for API clients like Postman)
+
+(Disabling login mechanisms is handled in later sections.)
+
+---
+
+## 🚀 How to Run
+
+```bash
+mvn spring-boot:run
