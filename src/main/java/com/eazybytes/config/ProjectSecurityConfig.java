@@ -26,17 +26,4 @@ public class ProjectSecurityConfig {
         http.httpBasic(withDefaults());
         return http.build();
     }
-
-    @Bean
-    public UserDetailsService userDetailsService(){
-        UserDetails user = User.withUsername("user").password("{noop}12345").authorities("read").build();
-        UserDetails admin = User.withUsername("admin")
-                .password("{bcrypt}$2a$12$S4dnTNHKTuXC1XI1WMVR4edlKe5yEyhR1CTNbTctsOZMsZD9qKaYy").authorities("admin").build();
-        return new InMemoryUserDetailsManager(user,admin);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
 }
