@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.eazybytes</groupId>
-	<artifactId>db-user-auth</artifactId>
+	<artifactId>jdbc-user-auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Security – Database User Authentication</name>
-	<description>Demo project for Spring Boot and Spring Security</description>
+	<name>Spring Security – JDBC Authentication (JdbcUserDetailsManager)</name>
+	<description>Database-backed authentication using Spring Security's built-in JdbcUserDetailsManager
+		with the default users and authorities schema.</description>
 	<url/>
 	<licenses>
 		<license/>
