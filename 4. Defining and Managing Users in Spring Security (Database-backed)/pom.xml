@@ -11,9 +11,10 @@
 	<groupId>com.eazybytes</groupId>
 	<artifactId>jdbc-user-auth</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring Security – JDBC Authentication (JdbcUserDetailsManager)</name>
-	<description>Database-backed authentication using Spring Security's built-in JdbcUserDetailsManager
-		with the default users and authorities schema.</description>
+	<name>Spring Security – Database-backed User Management</name>
+	<description>Demonstrates how Spring Security defines, loads, and manages users
+		using a database, starting with framework defaults and evolving
+		toward custom user loading strategies.</description>
 	<url/>
 	<licenses>
 		<license/>
