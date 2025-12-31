@@ -1,7 +1,12 @@
 package easybytes.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name="customer")
 public class Customer {
