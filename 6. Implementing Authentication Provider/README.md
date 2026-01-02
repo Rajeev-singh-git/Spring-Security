@@ -1,196 +1,196 @@
-# 🔐 Password Security & PasswordEncoder in Spring Security
+# 🔐 Section 6 — Authentication Providers & Profile-Based Security
 
-## 📌 What This Section Covers
+## 🎯 Goal of This Section
 
-This section builds a **complete, production-grade understanding of password security** in Spring Security — from first principles to real execution.
+This section focuses on **how Spring Security actually authenticates users** and **how to customize that process** for real-world enterprise needs.
 
-It explains **why passwords must be handled differently** from other data and how Spring Security solves this problem correctly.
+By the end of this section, we:
 
----
+- Fully understand **AuthenticationProvider**
 
-## 🎯 Learning Objectives
+- Implement a **custom AuthenticationProvider**
 
-By the end of this section, you will clearly understand:
-
-- Why **encoding** and **encryption** are NOT suitable for passwords
-
-- Why **hashing** is the only correct approach
-
-- The **limitations of plain hashing**
-
-- How attacks like brute force, dictionary, and rainbow tables work
-
-- How **salting** and **slow hashing** fix these weaknesses
-
-- How Spring Security’s `PasswordEncoder` implements all of this
-
-- Which password encoders exist and **which one to use in production**
-
-- How password verification actually happens during authentication
+- Control authentication behavior **based on environment (profiles)**
 
 ---
 
-## 🧠 Key Concepts Covered
+## 🧠 Core Concepts Covered
 
-### 1️⃣ Encoding vs Encryption vs Hashing
+### 1️⃣ AuthenticationProvider (The Real Auth Engine)
 
-- Encoding → data representation (❌ passwords)
+- `AuthenticationProvider` is where **authentication decisions are made**
 
-- Encryption → reversible confidentiality (❌ passwords)
-
-- Hashing → irreversible verification (✅ passwords)
-
----
-
-### 2️⃣ Why Hashing Alone Is Not Enough
-
-- Same password → same hash
-
-- Fast hashing enables brute-force and rainbow table attacks
-
----
-
-### 3️⃣ Making Hashing Secure
-
-- **Salting** → defeats precomputed attacks
-
-- **Slow hashing** → makes brute force infeasible
-
----
-
-### 4️⃣ Spring Security PasswordEncoder
-
-- Encapsulates:
+- Default provider used by Spring Security:
   
-  - Salting
-  
-  - Slow hashing
-  
-  - Secure verification
+  - `DaoAuthenticationProvider`
 
-- Core methods:
+- It:
   
-  - `encode()` → registration
+  - Loads user via `UserDetailsService`
   
-  - `matches()` → login
+  - Validates password using `PasswordEncoder`
 
 ---
 
-### 5️⃣ PasswordEncoder Implementations
+### 2️⃣ Why Custom AuthenticationProvider?
 
-- ❌ Deprecated: NoOp, Standard, MD5-based encoders
+Default provider is **not enough** when:
 
-- ⚠️ PBKDF2 (older, avoid)
+- You need **custom authentication rules**
+  
+  - Age check
+  
+  - Country check
+  
+  - Environment-based behavior
 
-- ✅ **BCrypt (recommended default)**
+- You want **multiple authentication styles**
+  
+  - Username/password
+  
+  - OAuth2
+  
+  - Legacy systems (JAAS)
 
-- ⚠️ SCrypt / Argon2 (strong but complex)
+👉 Solution: **Write your own AuthenticationProvider**
 
 ---
 
-### 6️⃣ DelegatingPasswordEncoder (Best Practice)
+## 🧩 AuthenticationProvider Contract
 
-- Delegates to encoders using password prefixes
-
-- Enables future upgrades without code changes
-
-- Default choice in Spring Security
-
----
-
-## 🧩 Minimal Code Required (Implementation)
-
-### 1️⃣ Define PasswordEncoder Bean (One Line That Matters)
+Every `AuthenticationProvider` must implement:
 
 ```java
-@Bean 
-PasswordEncoder passwordEncoder() { 
-    return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-}
+Authentication authenticate(Authentication authentication);
+boolean supports(Class<?> authentication);
 ```
 
-### Why this is enough
+### 🔹 `supports()`
 
-- Uses **BCrypt by default**
+- Tells Spring Security **which AuthenticationToken this provider handles**
 
-- Automatically handles:
-  
-  - Random salting
-  
-  - Slow hashing
-  
-  - Password verification
-
-- Future-proof (supports multiple encoders via prefixes)
-
-❗ **Do NOT** create a `new BCryptPasswordEncoder()` bean directly.
-
----
-
-### 2️⃣ Hash Password During Registration
+- Example:
 
 ```java
-String hashedPwd = passwordEncoder.encode(rawPassword);
+return UsernamePasswordAuthenticationToken.class 
+       .isAssignableFrom(authentication);
 ```
 
-`String hashedPwd = passwordEncoder.encode(rawPassword);`
+### 🔹 `authenticate()`
 
-- Stores salted + hashed password in DB
+- Actual authentication logic
+
+- Load user
+
+- Validate credentials
+
+- Return authenticated `Authentication` object or throw exception
 
 ---
 
-### 3️⃣ Password Verification During Login (Automatic)
+## 🏗️ Custom AuthenticationProvider Implemented
+
+### `EazyBankUsernamePwdAuthenticationProvider`
+
+- Replaces `DaoAuthenticationProvider`
+
+- Uses:
+  
+  - Custom `UserDetailsService`
+  
+  - `PasswordEncoder`
+
+- Fully controls authentication flow
+
+---
+
+## 🌍 Environment-Based Authentication (Profiles)
+
+### Real-World Problem
+
+| Environment    | Requirement                |
+| -------------- | -------------------------- |
+| DEV / QA / UAT | Easy access (any password) |
+| PROD           | Strict security            |
+
+QA teams **should not remember passwords**  
+Production **must remain secure**
+
+---
+
+## ✅ Solution: Profile-Based Providers
+
+We implemented **two AuthenticationProviders**:
+
+| Profile           | Provider                                     | Password Check |
+| ----------------- | -------------------------------------------- | -------------- |
+| `!prod` (default) | `EazyBankUsernamePwdAuthenticationProvider`  | ❌ Skipped      |
+| `prod`            | `EazyBankProdUsernameAuthenticationProvider` | ✅ Enforced     |
+
+Activated using:
 
 ```java
-passwordEncoder.matches(rawPassword, storedHash);
+@Profile("prod") 
+@Profile("!prod")
 ```
 
-- Invoked internally by `DaoAuthenticationProvider`
-
-- Developers **never** compare passwords manually
-
----
-
-## 🔍 End-to-End Validation Performed
-
-- Registration debug:
-  
-  - Verified random salt generation
-  
-  - Verified different hashes for same password
-
-- Login debug:
-  
-  - Verified salt extraction
-  
-  - Verified hash comparison via `matches()`
-
-No additional code changes were required.
+✔ Only **one provider bean exists at runtime**  
+✔ ProviderManager automatically uses the correct one
 
 ---
 
-## 🚨 Critical Rules to Remember
+## 🔐 Profile-Based Security Configuration
 
-- ❌ Never store plain-text passwords
+Same profile strategy applied to:
 
-- ❌ Never decode passwords
+- `ProjectSecurityConfig` (non-prod)
 
-- ❌ Never hardcode `BCryptPasswordEncoder`
+- `ProjectSecurityProdConfig` (prod)
 
-- ✅ Always use `DelegatingPasswordEncoder`
+This enables:
 
-- ✅ Trust Spring Security defaults unless you have strong reasons
+- Relaxed rules in lower environments
 
----
-
-## 🧠 One-Line Summary
-
-> **Passwords must be hashed with salt and slow algorithms — and Spring Security’s PasswordEncoder already does this correctly when used as intended.**
+- Strict rules in production
 
 ---
 
-## ➡️ What’s Next
+## ⚙️ Spring Boot Profiles Used
 
-Next section focuses on:
+- `application.properties` → default / non-prod
 
-> **AuthenticationProviders — how Spring Security decides *who* authenticates and *how*.**
+- `application_prod.properties` → production
+
+- Profile activation via:
+  
+  - `spring.profiles.active`
+  
+  - Environment variables (recommended)
+
+---
+
+## 🧠 Key Takeaways
+
+- **AuthenticationProvider is the core of authentication**
+
+- `supports()` decides **which provider is used**
+
+- Profiles decide **which provider exists**
+
+- No conditionals, no hacks — only clean Spring design
+
+- This is **how authentication is customized in real projects**
+
+---
+
+## 🚀 Outcome
+
+After this section, we can:
+
+- Control authentication behavior per environment
+
+- Extend authentication safely
+
+- Confidently reason about Spring Security internals
+
+## 
