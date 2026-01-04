@@ -24,7 +24,8 @@ public class ProjectSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests.requestMatchers("/dashboard").authenticated()
                         .requestMatchers("/", "/home", "/holidays/**", "/contact", "/saveMsg",
                                 "/courses", "/about", "/assets/**","/login/**").permitAll())
-                .formLogin(flc->flc.loginPage("/login"))
+                .formLogin(flc->flc.loginPage("/login").usernameParameter("userid").passwordParameter("secretPwd")
+                        .defaultSuccessUrl("/dashboard"))
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
