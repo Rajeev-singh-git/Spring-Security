@@ -12,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
-    public String displayLoginPage() {
+    public String displayLoginPage(@RequestParam(value="error",required = false) String error, Model model) {
+        String errorMessage = null;
+        if(null!=error){
+            errorMessage= "Username or Password is incorrect !!";
+        }
+        model.addAttribute("errorMessge",errorMessage);
         return "login.html";
     }
+
 
 }

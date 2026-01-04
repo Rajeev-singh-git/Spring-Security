@@ -1,5 +1,8 @@
 package com.eazybytes.eazyschool.config;
 
+import com.eazybytes.eazyschool.handler.CustomAuthenticationFailureHandler;
+import com.eazybytes.eazyschool.handler.CustomAuthenticationSuccessHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
@@ -25,7 +28,7 @@ public class ProjectSecurityConfig {
                         .requestMatchers("/", "/home", "/holidays/**", "/contact", "/saveMsg",
                                 "/courses", "/about", "/assets/**","/login/**").permitAll())
                 .formLogin(flc->flc.loginPage("/login").usernameParameter("userid").passwordParameter("secretPwd")
-                        .defaultSuccessUrl("/dashboard"))
+                        .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true"))
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
