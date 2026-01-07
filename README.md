@@ -47,7 +47,7 @@ Each section:
 
 - `formLogin()` vs `httpBasic()`
 
-👉 [Go to Section 2 README]([Spring-Security/2. Change Default Security Configuration/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/2.%20Change%20Default%20Security%20Configuration/README.md))
+👉 [Go to Section 2 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/2.%20Change%20Default%20Security%20Configuration/README.md)
 
 ---
 
@@ -67,7 +67,7 @@ Each section:
 
 - Authentication flow with users
 
-👉 [Go to Section 3 README]([Spring-Security/3. Creating Users using InMemoryUserDetailsManager/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/3.%20Creating%20Users%20using%20InMemoryUserDetailsManager/README.md))
+👉 [Go to Section 3 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/3.%20Creating%20Users%20using%20InMemoryUserDetailsManager/README.md)
 
 ---
 
@@ -85,7 +85,7 @@ Each section:
 
 - Limitations of fixed schema approach
 
-👉 [Go to Section 4 README]([Spring-Security/4. Defining and Managing Users in Spring Security (Database-backed)/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/4.%20Defining%20and%20Managing%20Users%20in%20Spring%20Security%20(Database-backed)/README.md))
+👉 [Go to Section 4 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/4.%20Defining%20and%20Managing%20Users%20in%20Spring%20Security%20(Database-backed)/README.md)
 
 ---
 
@@ -105,7 +105,7 @@ Each section:
 
 - Why this approach is used in production
 
-👉 [Go to Section 5 README]([Spring-Security/5. Password Management with Password Encoders/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/5.%20Password%20Management%20with%20Password%20Encoders/README.md))
+👉 [Go to Section 5 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/5.%20Password%20Management%20with%20Password%20Encoders/README.md)
 
 ---
 
@@ -127,7 +127,7 @@ Each section:
 
 - Environment-specific authentication behavior
 
-👉 [Go to Section 6 README]([Spring-Security/6. Implementing Authentication Provider/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/6.%20Implementing%20Authentication%20Provider/README.md))
+👉 [Go to Section 6 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/6.%20Implementing%20Authentication%20Provider/README.md)
 
 ---
 
@@ -153,4 +153,4 @@ Each section:
 
 - Accessing logged-in user details
 
-👉 [Go to Section 7 README]([Spring-Security/7. Sprinng Security Customizations/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/7.%20Sprinng%20Security%20Customizations/README.md))
+👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/7.%20Sprinng%20Security%20Customizations/README.md)
