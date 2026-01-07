@@ -29,7 +29,7 @@ Each section:
 
 - Default authentication & authorization behavior
 
-👉 [Go to Section 1 README]([Spring-Security/1. Using Default Security Configuration/README.md at main · Rajeev-singh-git/Spring-Security](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/1.%20Using%20Default%20Security%20Configuration/README.md))
+👉 [Go to Section 1 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/1.%20Using%20Default%20Security%20Configuration/README.md)
 
 ---
 
