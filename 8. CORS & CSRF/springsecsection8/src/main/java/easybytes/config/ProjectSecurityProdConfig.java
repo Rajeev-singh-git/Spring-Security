@@ -3,6 +3,7 @@ package easybytes.config;
 
 import easybytes.exceptionhandling.CustomAccessDeniedHandler;
 import easybytes.exceptionhandling.CustomBasicAuthenticationEntryPoint;
+import easybytes.filter.CsrfCookieFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
@@ -38,9 +41,9 @@ public class ProjectSecurityProdConfig {
                         return config;
                     }
                 }))
-             .sessionManagement(smc->smc.invalidSessionUrl("/invalidSession").maximumSessions(1).maxSessionsPreventsLogin(true))
+             .csrf(csrfConfig -> csrfConfig.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+             .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
              .requiresChannel(rcc-> rcc.anyRequest().requiresSecure())
-             .csrf(csrfConfig->csrfConfig.disable())
              .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/myAccount","/myBalance","/myLoans","/myCards").authenticated()
                 .requestMatchers("/notice","/contact","/error","/register").permitAll());
