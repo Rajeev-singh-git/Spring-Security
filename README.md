@@ -154,3 +154,36 @@ Each section:
 - Accessing logged-in user details
 
 👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/7.%20Sprinng%20Security%20Customizations/README.md)
+
+---
+
+### 8️⃣ Browser Security: CORS & CSRF (Production-Critical)
+
+**Goal:** Understand and correctly implement browser-level security
+
+**Key Concepts**
+
+- What CORS **is** and **is not**
+
+- Preflight requests & browser enforcement
+
+- Why CORS does **not** protect against CSRF
+
+- CSRF attack flow (real-world mental model)
+
+- CSRF token lifecycle (generation → storage → validation)
+
+- `CookieCsrfTokenRepository`
+
+- `CsrfFilter` & `CsrfTokenRequestAttributeHandler`
+
+- Custom CSRF cookie filter
+
+- Session & SecurityContext implications
+
+- Frontend (Angular) + Backend coordination
+
+- Ignoring CSRF for public APIs (safely)
+
+👉 [Go to Section 8 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/8.%20CORS%20%26%20CSRF)
+
