@@ -51,10 +51,17 @@ public class ProjectSecurityProdConfig {
                         .ignoringRequestMatchers("/contact","/register")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
-                .requiresChannel(rcc-> rcc.anyRequest().requiresSecure())
+                .requiresChannel(rcc-> rcc.anyRequest().requiresSecure()) //Only HTTPS
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/myAccount","/myBalance","/myLoans","/myCards","/user").authenticated()
-                        .requestMatchers("/notice","/contact","/error","/register").permitAll());
+//                    .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+//                    .requestMatchers("/myBalance").hasAuthority("VIEWCARDS")
+//                    .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
+//                    .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+                        .requestMatchers("/myAccount").hasRole("USER")
+                        .requestMatchers("/myBalance").hasAnyRole("USER","ADMIN")
+                        .requestMatchers("/myLoans").hasRole("USER")
+                        .requestMatchers("/myCards").hasRole("USER")
+                        .requestMatchers("/notices","/contact","/error","/register").permitAll());
         http.formLogin(withDefaults());
         http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
         http.exceptionHandling(ehc->ehc.accessDeniedHandler(new CustomAccessDeniedHandler()));
