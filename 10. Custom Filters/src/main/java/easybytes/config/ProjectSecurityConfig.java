@@ -4,6 +4,7 @@ package easybytes.config;
 import easybytes.exceptionhandling.CustomAccessDeniedHandler;
 import easybytes.exceptionhandling.CustomBasicAuthenticationEntryPoint;
 import easybytes.filter.CsrfCookieFilter;
+import easybytes.filter.RequestValidationBeforeFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.context.annotation.Bean;
@@ -52,6 +53,7 @@ public class ProjectSecurityConfig {
                         .ignoringRequestMatchers("/contact","/register")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
             .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
+            .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
             .requiresChannel(rcc-> rcc.anyRequest().requiresInsecure())
             .authorizeHttpRequests((requests) -> requests
 //                    .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
