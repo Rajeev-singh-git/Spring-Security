@@ -205,4 +205,48 @@ Each section:
 
 👉 [Go to Section 9 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/9.%20Authorization%20Implementation)
 
+---
+
+### 🔟 Custom Filters in Spring Security
+
+**Goal:** Understand and extend Spring Security at the **filter-chain level**
+
+**What this section covers**
+
+- How Spring Security filter chain really works
+
+- Internal filter execution & ordering
+
+- Creating custom filters using:
+  
+  - `Filter`
+  
+  - `GenericFilterBean`
+  
+  - `OncePerRequestFilter`
+
+- Injecting filters using:
+  
+  - `addFilterBefore`
+  
+  - `addFilterAfter`
+  
+  - `addFilterAt` (and when *not* to use it)
+
+- Real custom filters:
+  
+  - Pre-auth request validation
+  
+  - Post-auth logging & auditing
+  
+  - Order-independent filters
+
+- Debugging filters with `@EnableWebSecurity(debug = true)`
+
+- Common production pitfalls (missing `chain.doFilter()`)
+
+👉 **Outcome:** You understand **how Spring Security actually works internally**.
+
+👉 [Go to Section 10 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
+
 
