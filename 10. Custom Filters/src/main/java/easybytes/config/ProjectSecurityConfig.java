@@ -4,6 +4,7 @@ package easybytes.config;
 import easybytes.exceptionhandling.CustomAccessDeniedHandler;
 import easybytes.exceptionhandling.CustomBasicAuthenticationEntryPoint;
 import easybytes.filter.AuthoritiesLoggingAfterFilter;
+import easybytes.filter.AuthoritiesLoggingAtFilter;
 import easybytes.filter.CsrfCookieFilter;
 import easybytes.filter.RequestValidationBeforeFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -56,6 +57,7 @@ public class ProjectSecurityConfig {
             .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
             .addFilterBefore(new RequestValidationBeforeFilter(), BasicAuthenticationFilter.class)
             .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
+            .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
             .requiresChannel(rcc-> rcc.anyRequest().requiresInsecure())
             .authorizeHttpRequests((requests) -> requests
 //                    .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
