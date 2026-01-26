@@ -187,3 +187,22 @@ Each section:
 
 👉 [Go to Section 8 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/8.%20CORS%20%26%20CSRF)
 
+---
+
+### 9️⃣ Authorization: Authorities & Roles
+
+**Goal:** Control *what an authenticated user can access*
+
+**Key Takeaways**
+
+- Authentication vs Authorization (401 vs 403)
+
+- Authority-based vs Role-based authorization
+
+- Endpoint protection using `hasAuthority()` / `hasRole()`
+
+- Handling authorization failures & events
+
+👉 [Go to Section 9 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/9.%20Authorization%20Implementation)
+
+
