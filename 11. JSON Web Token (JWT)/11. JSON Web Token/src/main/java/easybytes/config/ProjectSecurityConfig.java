@@ -59,7 +59,7 @@ public class ProjectSecurityConfig {
             .addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class)
             .addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class)
             .addFilterAfter(new JWTTokenGeneratorFilter(),BasicAuthenticationFilter.class)
-            .addFilterBefore(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
+            .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
             .requiresChannel(rcc-> rcc.anyRequest().requiresInsecure())
             .authorizeHttpRequests((requests) -> requests
 //                    .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
