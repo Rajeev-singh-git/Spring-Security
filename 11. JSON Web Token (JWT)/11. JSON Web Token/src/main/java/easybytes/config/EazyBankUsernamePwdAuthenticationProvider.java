@@ -3,6 +3,7 @@ package easybytes.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -23,9 +24,16 @@ public class EazyBankUsernamePwdAuthenticationProvider implements Authentication
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
-        String pwd = authentication.getCredentials().toString();
+        String presentedPassword = authentication.getCredentials().toString();
+
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return new UsernamePasswordAuthenticationToken(username,pwd,userDetails.getAuthorities());
+
+        // Wrong password check, without this check also formlogin was working correctly, why?
+        if (!passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
+            throw new BadCredentialsException("Invalid password");
+        }
+
+        return new UsernamePasswordAuthenticationToken(username,presentedPassword,userDetails.getAuthorities());
     }
 
     @Override
