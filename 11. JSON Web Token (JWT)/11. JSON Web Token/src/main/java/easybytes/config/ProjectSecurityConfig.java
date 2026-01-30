@@ -62,10 +62,6 @@ public class ProjectSecurityConfig {
             .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
             .requiresChannel(rcc-> rcc.anyRequest().requiresInsecure())
             .authorizeHttpRequests((requests) -> requests
-//                    .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
-//                    .requestMatchers("/myBalance").hasAuthority("VIEWCARDS")
-//                    .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
-//                    .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
                     .requestMatchers("/myAccount").hasRole("USER")
                     .requestMatchers("/myBalance").hasAnyRole("USER","ADMIN")
                     .requestMatchers("/myLoans").hasRole("USER")
