@@ -33,7 +33,7 @@ public class EazyBankUsernamePwdAuthenticationProvider implements Authentication
             throw new BadCredentialsException("Invalid password");
         }
 
-        return new UsernamePasswordAuthenticationToken(username,presentedPassword,userDetails.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(username,null,userDetails.getAuthorities());
     }
 
     @Override
