@@ -249,4 +249,37 @@ Each section:
 
 👉 [Go to Section 10 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
 
+---
+
+### 🔐 1️⃣1️⃣ JWT & Stateless Authentication (Production Grade)
+
+**Goal:** Replace session-based security with scalable, stateless JWT authentication
+
+**Key Takeaways**
+
+- Why sessions (`JSESSIONID`) don’t scale
+
+- Opaque tokens vs JWT (when & why)
+
+- JWT structure (header, payload, signature)
+
+- Token tampering & signature validation
+
+- Stateless authentication using JWT
+
+- Custom JWT generator & validator filters
+
+- `SessionCreationPolicy.STATELESS`
+
+- Secret key handling via environment/properties
+
+- Token expiration & trust boundaries
+
+- Angular UI → JWT propagation via headers
+
+- Manual authentication using `AuthenticationManager`
+
+👉 **Outcome:** You can design and implement real-world stateless security using JWT.  
+👉 [Go to Section 11 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
+
 
