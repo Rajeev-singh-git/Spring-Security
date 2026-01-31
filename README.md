@@ -280,6 +280,7 @@ Each section:
 - Manual authentication using `AuthenticationManager`
 
 👉 **Outcome:** You can design and implement real-world stateless security using JWT.  
+
 👉 [Go to Section 11 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
 
 
