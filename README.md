@@ -283,4 +283,48 @@ Each section:
 
 👉 [Go to Section 11 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
 
+---
+
+### 🔐 **1️⃣2️⃣ Method Level Security (Invocation & Filtering Authorization)**   **Goal:** Secure business logic directly at the Java method level
+
+**Key Concepts**
+
+- Why API-level security is not enough
+
+- Enabling method security with `@EnableMethodSecurity`
+
+- Invocation authorization:
+  
+  - `@PreAuthorize` (blocks method execution)
+  
+  - `@PostAuthorize` (blocks response after execution)
+
+- Filtering authorization:
+  
+  - `@PreFilter` (filters input collections)
+  
+  - `@PostFilter` (filters output collections)
+
+- Silent filtering vs hard authorization failures
+
+- Method security across:
+  
+  - Controller
+  
+  - Service
+  
+  - Repository layers
+
+- Spring AOP–based method interception
+
+- Real-world edge cases:
+  
+  - Empty collections
+  
+  - 403 vs 200 (empty response)
+  
+  - UI + backend contract alignment
+
+👉 [Go to Section 12 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/12.%20Method%20Level%20Security)
+
 
