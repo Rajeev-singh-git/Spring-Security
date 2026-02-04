@@ -1,4 +1,4 @@
-package com.eazybytes.springsecOAUTH2;
+package com.eazybytes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

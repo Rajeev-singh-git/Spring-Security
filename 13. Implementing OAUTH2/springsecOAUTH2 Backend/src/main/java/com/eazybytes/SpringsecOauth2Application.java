@@ -1,4 +1,4 @@
-package com.eazybytes.springsecOAUTH2;
+package com.eazybytes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
