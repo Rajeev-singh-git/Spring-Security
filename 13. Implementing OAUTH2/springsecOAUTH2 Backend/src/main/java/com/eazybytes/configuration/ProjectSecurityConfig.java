@@ -5,20 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
-import org.springframework.security.oauth2.client.registration.ClientRegistration;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
-import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class ProjectSecurityConfig {
-
-    @Value("${git.client-id}")
-    private String gitClientId;
-
-    @Value("${git.client-secret}")
-    private String gitClientSecret;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
@@ -30,6 +20,7 @@ public class ProjectSecurityConfig {
      return httpSecurity.build();
   }
 
+  /*
     @Bean
     ClientRegistrationRepository clientRegistrationRepository(){
         ClientRegistration github = githubClientRegistration();
@@ -52,5 +43,7 @@ public class ProjectSecurityConfig {
 //                .clientId("")
 //                .clientSecret("").build();
 //    }
+
+   */
 
 }
