@@ -301,4 +301,66 @@ Each section:
 
 👉 [Go to Section 12 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/12.%20Method%20Level%20Security)
 
+---
 
+### 🔐 **1️⃣3️⃣ OAuth 2.0, OpenID Connect & IAM (Theory Deep-Dive)**
+
+**Goal:** Build a rock-solid mental model of modern authentication, authorization, and identity systems used in enterprises
+
+**Key Takeaways**
+
+- Why OAuth 2.0 solves **authorization**, not identity
+
+- Core OAuth roles: Resource Owner, Client, Authorization Server, Resource Server
+
+- Grant types and when to use them (Auth Code, PKCE, Client Credentials, Refresh Token)
+
+- Why Implicit & Password grants are deprecated
+
+- How access tokens are validated (JWT vs opaque, local vs introspection)
+
+- OpenID Connect as the missing **identity layer**
+
+- Access Token vs ID Token (why both exist)
+
+- How OAuth + OIDC together form **IAM (Identity & Access Management)**
+
+👉 **Outcome:** You can reason clearly about OAuth, OIDC, and IAM without confusion or cargo-culting.
+
+👉 [Go to Section 13 README](#)
+
+---
+
+### 🔐 **1️⃣4️⃣ OAuth 2.0 Login with Spring Security (Social Login Integration)**
+
+**Goal:** Implement OAuth 2.0 login in a Spring Boot application using real social providers
+
+**Key Takeaways**
+
+- Enabling OAuth 2.0 login via `oauth2Login()`
+
+- How Spring Security acts as:
+  
+  - OAuth Client
+  
+  - Resource Server
+
+- Two configuration approaches:
+  
+  - Explicit `ClientRegistrationRepository` (code-driven)
+  
+  - Auto-configuration via `application.properties`
+
+- Role of `ClientRegistration`, `CommonOAuth2Provider`, and in-memory repositories
+
+- How Spring creates `OAuth2AuthenticationToken` after login
+
+- Mapping social identity attributes into application context
+
+- Why social login is **authentication-only**, not authorization
+
+- Where this approach fits (small apps) and where it breaks (enterprise systems)
+
+👉 **Outcome:** You can integrate social login correctly and know **exactly why it’s not enough for enterprise security**.
+
+👉 [Go to Section 14 README](#)

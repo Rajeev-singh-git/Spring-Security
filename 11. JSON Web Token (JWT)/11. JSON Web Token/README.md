@@ -21,8 +21,6 @@ Client → Login
        → Client sends JWT on every request
        → Backend validates JWT
        → SecurityContext built per request
-
-
 ```
 
 **No server memory.  
@@ -224,7 +222,6 @@ Header.Payload.Signature
 JWTTokenValidatorFilter
  → BasicAuthenticationFilter
  → JWTTokenGeneratorFilter
-
 ```
 
 Order matters more than logic.
@@ -321,5 +318,3 @@ Each section:
 - Has its **own dedicated README** for quick revision
 
 ---
-
-
