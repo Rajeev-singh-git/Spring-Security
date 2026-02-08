@@ -363,6 +363,4 @@ Each section:
 
 👉 **Outcome:** You can integrate social login correctly and know **exactly why it’s not enough for enterprise security**.
 
-👉 [Go to Section 14 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/14.%20Implementing%20OAUTH2/springsecOAUTH2%20Backend)
-
-
+👉 [Go to Section 14 README](#)
