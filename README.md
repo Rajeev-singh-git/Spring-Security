@@ -153,7 +153,7 @@ Each section:
 
 - Accessing logged-in user details
 
-👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/7.%20Sprinng%20Security%20Customizations/README.md)
+👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/07.%20Sprinng%20Security%20Customizations)
 
 ---
 
