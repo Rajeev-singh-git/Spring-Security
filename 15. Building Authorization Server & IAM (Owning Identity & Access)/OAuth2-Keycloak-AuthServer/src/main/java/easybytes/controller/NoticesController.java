@@ -17,15 +17,22 @@ public class NoticesController {
 
     private final NoticeRepository noticeRepository;
 
+//    @GetMapping("/notices")
+//    public ResponseEntity<List<Notice>> getNotices() {
+//        List<Notice> notices = noticeRepository.findAllActiveNotices();
+//        if (notices != null) {
+//            return ResponseEntity.ok()
+//                    .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
+//                    .body(notices);
+//        } else {
+//            return null;
+//        }
+//    }
+
     @GetMapping("/notices")
     public ResponseEntity<List<Notice>> getNotices() {
-        List<Notice> notices = noticeRepository.findAllActiveNotices();
-        if (notices != null) {
-            return ResponseEntity.ok()
-                    .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
-                    .body(notices);
-        } else {
-            return null;
-        }
-    }
+        List<Notice> notices = (List<Notice>) noticeRepository.findAll();
+         return ResponseEntity.ok().body(notices);
+     }
+
 }

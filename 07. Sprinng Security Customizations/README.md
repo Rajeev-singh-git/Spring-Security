@@ -1,322 +1,149 @@
-# 🔐 Section 7 — Spring Security Customization for most common use cases
+# 🔐 Section 7 — Spring Security Customizations
 
 ---
 
-### HTTPS, Exception Handling, Sessions, Form Login, UI Integration & SecurityContext
+# 🎯 What You'll Learn
 
-> **Purpose of this README**  
-> This file is a **high-signal summary** of Section 7.  
-> Use it for **quick revision, interviews, or context reload** — not for deep study (that’s what Notion is for).
+This section moves from **REST API security** to **browser-based web application security** by covering:
 
----
-
-## 🎯 What This Section Teaches (Big Picture)
-
-This section shifts Spring Security from **API-only security** to **real-world web (MVC / monolithic) security**, covering:
-
-- Transport security (HTTPS)
-
-- Authentication & authorization failures
-
-- Session behavior
-
-- Login / logout UX
-
-- UI integration (Thymeleaf)
-
-- SecurityContext internals & access
+- HTTPS (Channel Security)
+- Security Exception Handling
+- Session Management
+- Authentication Events
+- Form Login & Logout
+- Thymeleaf Integration
+- SecurityContext & SecurityContextHolder
 
 ---
 
-## 7.1 🔒 Enforcing HTTPS (Channel Security)
+# 📂 Project Structure
 
-**What**
+This section uses **two applications** because the remaining topics target different types of clients.
 
-- Force all requests to use HTTPS
+## 1. REST-Security-Customizations
 
-- Automatically redirect HTTP → HTTPS
+A REST API project that continues from the previous sections.
 
-**Why**
+**Topics Covered**
 
-- Prevent credential leakage
+- 7.1 Enforcing HTTPS (Channel Security)
+- 7.2 Exception Handling
+- 7.3 Session Management
+- 7.4 Authentication Events
 
-- Mandatory for production systems
+**Client**
 
-**Key idea**
-
-- Channel security works **before authentication**
-
-- Transport-level protection, not application logic
+- REST APIs
+- Postman
 
 ---
 
-## 7.2 🚨 Exception Handling in Spring Security
+## 2. EazySchool
 
-**Problem**
+A Spring MVC + Thymeleaf application used to demonstrate browser-based authentication.
 
-- Authentication & authorization failures are different
-
-- UI and APIs need different responses
-
-**Key components**
-
-- `AuthenticationEntryPoint` → **401 / unauthenticated**
-
-- `AccessDeniedHandler` → **403 / unauthorized**
-
-**Used for**
-
-- Custom error pages (MVC)
-
-- Custom JSON responses (APIs)
-
-- Centralized security error control
-
-**Mental model**
-
-```java
-Not authenticated → EntryPoint (401) 
-Authenticated but forbidden → AccessDeniedHandler (403)
+```
+EazySchool
+├── before-customization
+└── after-customization
 ```
 
+### before-customization
+
+The application before any Spring Security UI customization.
+
+Use this project if you want to practice the implementation yourself.
+
+### after-customization
+
+The completed implementation with all customizations applied.
+
+Use this project as a reference while revising or comparing your implementation.
+
+**Topics Covered**
+
+- 7.5 Form Login
+- 7.6 Form Logout
+- 7.7 Thymeleaf Integration
+- 7.8 SecurityContext & SecurityContextHolder
+
 ---
 
-## 7.3 🧠 Session Management in Spring Security
+# 📚 Section Roadmap
 
-**What Spring Security manages**
+## 7.1 🔒 Enforcing HTTPS
 
-- Session creation
+- Force HTTP → HTTPS
+- Secure communication before authentication
 
-- Session reuse
+---
 
+## 7.2 🚨 Exception Handling
+
+- `AuthenticationEntryPoint` (401)
+- `AccessDeniedHandler` (403)
+- Custom responses for REST APIs
+
+---
+
+## 7.3 🧠 Session Management
+
+- Session timeout
 - Concurrent sessions
-
 - Session fixation protection
-
-**Important concepts**
-
-- Authentication is stored in **session**
-
-- SecurityContext is restored per request
-
-- Session ≠ cookie (cookie only carries session id)
-
-**Why it matters**
-
-- Prevent session hijacking
-
-- Control concurrent logins
-
-- Essential for form-login apps
+- Invalid session handling
 
 ---
 
 ## 7.4 📢 Authentication Events
 
-**What**
-
-- Spring Security publishes events during auth lifecycle
-
-**Common events**
-
-- Authentication success
-
-- Authentication failure
-
-**Why useful**
-
-- Audit logs
-
+- Authentication success & failure events
+- Audit logging
 - Security monitoring
-
-- Alerts (email, SIEM, etc.)
-
-**Key insight**
-
-- Events are **decoupled from auth logic**
-
-- Clean way to observe security behavior
+- Event listeners
 
 ---
 
-## 7.5 🔑 Form Login Configuration
+## 7.5 🔑 Form Login
 
-**Why Form Login**
-
-- Required for MVC / monolithic apps
-
+- Custom login page
+- Login success & failure handling
 - Browser-based authentication
 
-### Two configuration styles
-
-#### 1️⃣ URL-based (simple)
-
-```java
-formLogin() 
-    .loginPage("/login") 
-    .defaultSuccessUrl("/dashboard")
-    .failureUrl("/login?error=true");
-```
-
-#### 2️⃣ Handler-based (real projects)
-
-- `AuthenticationSuccessHandler`
-
-- `AuthenticationFailureHandler`
-
-**Why handlers matter**
-
-- Full programmatic control
-
-- Logging, auditing, redirection
-
-- Preferred in production systems
-
 ---
 
-## 7.6 🚪 Logout Configuration (Clean Logout)
+## 7.6 🚪 Form Logout
 
-**What was implemented**
-
-- Custom logout message
-
+- Custom logout
 - Session invalidation
-
-- SecurityContext cleanup
-
-- Cookie deletion
-
-```java
-logout()
-   .logoutSuccessUrl("/login?logout=true") 
-   .invalidateHttpSession(true) 
-   .clearAuthentication(true)
-   .deleteCookies("JSESSIONID");
-```
-
-**Why this matters**
-
-- Prevents session reuse
-
-- Ensures complete logout
-
-- Security best practice
+- Cookie cleanup
+- Logout success handling
 
 ---
 
-## 7.7 🎨 Thymeleaf + Spring Security Integration
+## 7.7 🎨 Thymeleaf Integration
 
-**Problem**
-
-- UI must change based on authentication state
-
-**Solution**
-
-- Spring Security Thymeleaf Dialect
-
-**Common expressions**
-
-```java
-sec:authorize="isAnonymous()"
-sec:authorize="isAuthenticated()" 
-sec:authorize="hasRole('ADMIN')"
-```
-
-**Result**
-
-- Anonymous users → Home, Login
-
-- Authenticated users → Dashboard, Logout
-
-**Why important**
-
-- Clean UX
-
-- Secure UI rendering
-
-- Common in legacy & MVC apps
+- Authentication-aware UI
+- `sec:authorize`
+- Show/Hide UI elements based on authentication
 
 ---
 
 ## 7.8 🔐 SecurityContext & SecurityContextHolder
 
-### Core hierarchy
-
-```java
-Authentication
-   → SecurityContext
-      → SecurityContextHolder
-         → ThreadLocal
-
-```
-
-**Key facts**
-
-- Authentication stored after login
-
-- Available for entire request lifecycle
-
-- Managed internally by Spring Security
-
-### Holding strategies
-
-- `MODE_THREADLOCAL` (default, 90% cases)
-
-- `MODE_INHERITABLETHREADLOCAL` (async flows)
-
-- `MODE_GLOBAL` (desktop apps only)
+- SecurityContext architecture
+- Accessing the authenticated user
+- `SecurityContextHolder`
+- ThreadLocal strategy
 
 ---
 
-## 👤 Accessing Logged-In User Details
+# ✅ After This Section
 
-### Two supported approaches
+You'll be able to:
 
-#### 1️⃣ SecurityContextHolder (any layer)
-
-```java
-Authentication auth =
-  SecurityContextHolder.getContext().getAuthentication();
-
-```
-
-#### 2️⃣ Method parameter injection (controllers)
-
-```java
-public String dashboard(Authentication authentication) { }
-```
-
-**Rule of thumb**
-
-- Controller → method parameter
-
-- Service / util → SecurityContextHolder
-
----
-
-## 🧠 Final Mental Model (Interview Gold)
-
-- HTTPS protects **transport**
-
-- EntryPoint handles **unauthenticated**
-
-- AccessDenied handles **unauthorized**
-
-- Session stores **SecurityContext**
-
-- UI reads auth state via **Thymeleaf dialect**
-
-- Business logic reads user via **SecurityContextHolder**
-
----
-
-## ✅ Section Outcome
-
-After Section 7, you can:
-
-✔ Secure MVC apps end-to-end  
-✔ Control login & logout behavior  
-✔ Handle security exceptions cleanly  
-✔ Manage sessions correctly  
-✔ Build auth-aware UIs  
-✔ Explain SecurityContext with confidence
+- Secure both REST APIs and MVC applications.
+- Customize login, logout, and security exception handling.
+- Manage sessions securely.
+- Build authentication-aware UIs with Thymeleaf.
+- Access the authenticated user using `SecurityContextHolder`.
