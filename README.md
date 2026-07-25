@@ -34,6 +34,8 @@ Each section is an independent Spring Boot project with its own README, making i
 
 ## 🟢 Foundations
 
+Building a solid understanding of Spring Security fundamentals.
+
 | Section | Focus | README |
 |---------|-------|--------|
 | **1** | Default Security Configuration | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/01.%20Using%20Default%20Security%20Configuration/README.md) |
@@ -43,6 +45,8 @@ Each section is an independent Spring Boot project with its own README, making i
 ---
 
 ## 🔵 Authentication
+
+Understanding how Spring Security authenticates users.
 
 | Section | Focus | README |
 |---------|-------|--------|
@@ -54,6 +58,8 @@ Each section is an independent Spring Boot project with its own README, making i
 
 ## 🟣 Browser Security
 
+Securing browser-based applications using Spring Security.
+
 | Section | Focus | README |
 |---------|-------|--------|
 | **7** | Browser Login, Sessions & SecurityContext | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/07.%20Sprinng%20Security%20Customizations/README.md) |
@@ -63,19 +69,37 @@ Each section is an independent Spring Boot project with its own README, making i
 
 ## 🟠 Authorization
 
+Controlling what authenticated users are allowed to access.
+
 | Section | Focus | README |
 |---------|-------|--------|
 | **9** | Authorization | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/09.%20Authorization%20Implementation) |
 | **10** | Custom Filters | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters) |
-| **12** | Method Security | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/12.%20Method%20Level%20Security) |
 
 ---
 
 ## 🔴 Modern Authentication
 
+Moving beyond session-based authentication to modern identity and authorization systems.
+
+### Stateless Authentication
+
 | Section | Focus | README |
 |---------|-------|--------|
 | **11** | JWT Authentication | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/11.%20JSON%20Web%20Token%20(JWT)) |
+
+### Method-Level Authorization
+
+> **Method Security conceptually belongs to the 🟠 Authorization stage, but is covered after JWT to keep the learning progression aligned with real-world Spring Security applications.**
+
+| Section | Focus | README |
+|---------|-------|--------|
+| **12** | Method Security | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/12.%20Method%20Level%20Security) |
+
+### OAuth2 & Identity
+
+| Section | Focus | README |
+|---------|-------|--------|
 | **13** | OAuth2 & OpenID Connect (Theory) | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/13.%20OAuth2%20%26%20OpenID%20connect%20(Theory)) |
 | **14** | OAuth2 Login | [Open →](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/14.%20Implementing%20OAUTH2) |
 
