@@ -29,7 +29,7 @@ Each section:
 
 - Default authentication & authorization behavior
 
-👉 [Go to Section 1 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/01.%20Using%20Default%20Security%20Configuration/README.md)
+👉 [Go to Section 1 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/1.%20Using%20Default%20Security%20Configuration/README.md)
 
 ---
 
@@ -47,7 +47,7 @@ Each section:
 
 - `formLogin()` vs `httpBasic()`
 
-👉 [Go to Section 2 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/02.%20Change%20Default%20Security%20Configuration/README.md)
+👉 [Go to Section 2 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/2.%20Change%20Default%20Security%20Configuration/README.md)
 
 ---
 
@@ -67,7 +67,7 @@ Each section:
 
 - Authentication flow with users
 
-👉 [Go to Section 3 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/03.%20Creating%20Users%20using%20InMemoryUserDetailsManager/README.md)
+👉 [Go to Section 3 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/3.%20Creating%20Users%20using%20InMemoryUserDetailsManager/README.md)
 
 ---
 
@@ -85,7 +85,7 @@ Each section:
 
 - Limitations of fixed schema approach
 
-👉 [Go to Section 4 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/04.%20Defining%20and%20Managing%20Users%20in%20Spring%20Security%20(Database-backed)/README.md)
+👉 [Go to Section 4 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/4.%20Defining%20and%20Managing%20Users%20in%20Spring%20Security%20(Database-backed)/README.md)
 
 ---
 
@@ -105,7 +105,7 @@ Each section:
 
 - Why this approach is used in production
 
-👉 [Go to Section 5 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/05.%20Password%20Management%20with%20Password%20Encoders/README.md)
+👉 [Go to Section 5 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/5.%20Password%20Management%20with%20Password%20Encoders/README.md)
 
 ---
 
@@ -127,7 +127,7 @@ Each section:
 
 - Environment-specific authentication behavior
 
-👉 [Go to Section 6 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/06.%20Implementing%20Authentication%20Provider/README.md)
+👉 [Go to Section 6 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/6.%20Implementing%20Authentication%20Provider/README.md)
 
 ---
 
@@ -153,7 +153,7 @@ Each section:
 
 - Accessing logged-in user details
 
-👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/07.%20Sprinng%20Security%20Customizations/README.md)
+👉 [Go to Section 7 README](https://github.com/Rajeev-singh-git/Spring-Security/blob/main/7.%20Sprinng%20Security%20Customizations/README.md)
 
 ---
 
@@ -185,7 +185,7 @@ Each section:
 
 - Ignoring CSRF for public APIs (safely)
 
-👉 [Go to Section 8 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/08.%20CORS%20%26%20CSRF)
+👉 [Go to Section 8 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/8.%20CORS%20%26%20CSRF)
 
 ---
 
@@ -203,7 +203,7 @@ Each section:
 
 - Handling authorization failures & events
 
-👉 [Go to Section 9 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/09.%20Authorization%20Implementation)
+👉 [Go to Section 9 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/9.%20Authorization%20Implementation)
 
 ---
 
@@ -281,7 +281,7 @@ Each section:
 
 👉 **Outcome:** You can design and implement real-world stateless security using JWT.  
 
-👉 [Go to Section 11 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/11.%20JSON%20Web%20Token%20(JWT))
+👉 [Go to Section 11 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/10.%20Custom%20Filters)
 
 ---
 
@@ -327,7 +327,7 @@ Each section:
 
 👉 **Outcome:** You can reason clearly about OAuth, OIDC, and IAM without confusion or cargo-culting.
 
-👉 [Go to Section 13 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/13.%20OAuth2%20%26%20OpenID%20connect%20(Theory))
+👉 [Go to Section 13 README](#)
 
 ---
 
@@ -363,6 +363,6 @@ Each section:
 
 👉 **Outcome:** You can integrate social login correctly and know **exactly why it’s not enough for enterprise security**.
 
-👉 [Go to Section 14 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/14.%20Implementing%20OAUTH2)
+👉 [Go to Section 14 README](https://github.com/Rajeev-singh-git/Spring-Security/tree/main/14.%20Implementing%20OAUTH2/springsecOAUTH2%20Backend)
 
 
