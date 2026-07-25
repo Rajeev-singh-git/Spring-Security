@@ -1,4 +1,4 @@
-# 🔐 Section 9 — CORS & CSRF (Browser Security Deep Dive)
+# 🔐 Section 8 — CORS & CSRF (Browser Security Deep Dive)
 
 This section builds a complete mental model of **browser security** in Spring Security.
 
