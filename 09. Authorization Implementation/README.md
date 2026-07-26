@@ -22,6 +22,12 @@ By the end of this section, you will clearly understand:
 This section reflects **real-world, database-driven authorization**.
 
 ---
+## Authorization in Spring Security
+
+During **authentication**, custom `UserDetailsService` loads the user's roles/authorities from the database, converts them into `GrantedAuthority` objects, and attaches them to the authenticated `UserDetails`. Spring Security then stores these authorities inside the `Authentication` object in the `SecurityContext`.
+
+For every protected request, Spring Security **does not query the database again**. It simply reads the `GrantedAuthority` collection from the `Authentication` object and compares it with the authorization rules (`hasAuthority()`, `hasRole()`, `access()`) configured in the `SecurityFilterChain` to decide whether to allow the request (`200 OK`) or deny it (`403 Forbidden`).
+
 
 ## 🧠 Authentication vs Authorization (Mental Model)
 
