@@ -30,6 +30,7 @@ For every protected request, Spring Security **does not query the database again
 
 Spring Security loads authorities from the database only during authentication. During authorization, it performs an in-memory comparison between the authenticated user's GrantedAuthority collection and the rules configured in the SecurityFilterChain, without querying the database again.
 
+---
 ## 🧠 Authentication vs Authorization (Mental Model)
 
 - **Authentication (AuthN)** → *Who are you?*
