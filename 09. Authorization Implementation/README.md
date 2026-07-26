@@ -28,6 +28,7 @@ During **authentication**, custom `UserDetailsService` loads the user's roles/au
 
 For every protected request, Spring Security **does not query the database again**. It simply reads the `GrantedAuthority` collection from the `Authentication` object and compares it with the authorization rules (`hasAuthority()`, `hasRole()`, `access()`) configured in the `SecurityFilterChain` to decide whether to allow the request (`200 OK`) or deny it (`403 Forbidden`).
 
+Spring Security loads authorities from the database only during authentication. During authorization, it performs an in-memory comparison between the authenticated user's GrantedAuthority collection and the rules configured in the SecurityFilterChain, without querying the database again.
 
 ## 🧠 Authentication vs Authorization (Mental Model)
 
